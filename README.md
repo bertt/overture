@@ -15,7 +15,7 @@ Buildings:
 
 Places: (2049)
 
-(places)[places.geojson]
+[places.geojson](places.geojson)
 
 ```
 COPY (
