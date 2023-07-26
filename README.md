@@ -15,6 +15,15 @@ Buildings:
 
 Places: (2049)
 
+```
+COPY (
+SELECT ST_GeomFromWkb(geometry) AS geometry, JSON(names) AS names
+from  read_parquet('s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme=places/type=*/*', filename=true, hive_partitioning=1)
+where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2 
+) TO 'places.geojson'
+WITH (FORMAT GDAL, DRIVER 'GeoJSON');
+```
+
 Transportation:
 
 
