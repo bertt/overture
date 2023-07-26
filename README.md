@@ -23,12 +23,13 @@ where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2
 WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 ```
 
+result:
+
+
+
 ## Places
 
 2049 features / 59175720 
-
-
-[places.geojson](places.geojson)
 
 ```
 COPY (
@@ -38,6 +39,8 @@ where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2
 ) TO 'places.geojson'
 WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 ```
+
+result: [places.geojson](places.geojson)
 
 ## Transportation
 
