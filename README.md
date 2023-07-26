@@ -14,6 +14,8 @@ AOI (5.1, 52.1, 5.2, 52.2):
 
 $$ Buildings
 
+785524851 buildings
+
 ```
 COPY (
 SELECT ST_GeomFromWkb(geometry) AS geometry, JSON(names) AS names
@@ -25,7 +27,8 @@ WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 
 ## Places
 
-2049 features 
+2049 features / 59175720 
+
 
 [places.geojson](places.geojson)
 
@@ -39,6 +42,12 @@ WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 ```
 
 ## Transportation
+
+624933749 features
+
+## Admins
+
+99403 features
 
 
 
