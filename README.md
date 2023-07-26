@@ -1,8 +1,8 @@
-# overture
+# Overture Maps
 
 23-07-26
 
-Inspecting Overture database 
+Inspecting Overture Maps database 
 
 AOI (5.1, 52.1, 5.2, 52.2):
 
@@ -14,6 +14,8 @@ Buildings:
 
 
 Places: (2049)
+
+(places)[places.geojson]
 
 ```
 COPY (
