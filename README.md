@@ -14,6 +14,8 @@ AOI (5.1, 52.1, 5.2, 52.2):
 
 785524851 buildings
 
+height in est_height?
+
 ```
 COPY (
 SELECT ST_GeomFromWkb(geometry) AS geometry, JSON(names) AS names
