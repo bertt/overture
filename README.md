@@ -68,9 +68,6 @@ from  read_parquet('s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme
 WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 ```
 
-where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2 
-
-
 ## Downloading data
 
 With aws:
