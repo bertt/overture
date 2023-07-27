@@ -2,6 +2,15 @@
 
 https://github.com/OvertureMaps/data
 
+Getting started:
+
+```
+duckdb
+LOAD spatial;
+LOAD httpfs;
+SET s3_region='us-west-2';
+```
+
 23-07-26
 
 Inspecting Overture Maps database 
@@ -25,9 +34,7 @@ where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2
 WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 ```
 
-result:
-
-
+result: [buildings.geojson](buildings.geojson)
 
 ## Places
 
@@ -52,6 +59,39 @@ result: [places.geojson](places.geojson)
 
 99403 features
 
+
+```
+COPY (
+SELECT ST_GeomFromWkb(geometry) AS geometry, JSON(names) AS names
+from  read_parquet('s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme=admins/type=*/*', filename=true, hive_partitioning=1)
+) TO 'admins.geojson'
+WITH (FORMAT GDAL, DRIVER 'GeoJSON');
+```
+
+where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2 
+
+
+## Downloading data
+
+With aws:
+
+```
+$ aws s3 cp --recursive --region us-west-2 --no-sign-request s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme=transportation/
+```
+
+warning 70+GB data!
+
+after that convert to GeoJSON:
+
+```
+$ duckdb
+D load spatial;
+D SELECT count(ST_GeomFromWkb(geometry)) from read_parquet('./type=segment/*');
+D COPY (
+SELECT ST_GeomFromWkb(geometry) AS geometry from  read_parquet('./type=segment/*')
+) TO 'transport_segment.geojson'
+WITH (FORMAT GDAL, DRIVER 'GeoJSON');
+```
 
 
 
