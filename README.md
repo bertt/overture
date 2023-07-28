@@ -139,5 +139,20 @@ Alternative: Browse the data in Microsoft Azure Storage Explorer
 
 ![image](https://github.com/bertt/overture/assets/538812/b3f41037-8823-46dd-b107-e6014c2986ee)
 
+## nl.parquet
+
+There is a per country parquet file at https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/cholmes/overture/geoparquet-country/NL.parquet (for Netherlands)
+
+Works faster, with for example:
+
+```
+COPY (
+SELECT ST_GeomFromWkb(geometry) AS geometry, JSON(names) AS names, JSON(height) as height
+from  read_parquet('https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/cholmes/overture/geoparquet-country/NL.parquet', filename=true, hive_partitioning=1)
+where bbox.minX > 5.1 and bbox.maxX < 5.2 and bbox.minY>52.1 and bbox.maxY<52.2 
+) TO 'buildings2.geojson'
+WITH (FORMAT GDAL, DRIVER 'GeoJSON');
+```
+
 
 
