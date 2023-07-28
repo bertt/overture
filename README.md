@@ -135,3 +135,9 @@ D select * from read_parquet('./type=connector/*') limit 10;
 └─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
+Alternative: Browse the data in Microsoft Azure Storage Explorer
+
+![image](https://github.com/bertt/overture/assets/538812/b3f41037-8823-46dd-b107-e6014c2986ee)
+
+
+
