@@ -73,7 +73,7 @@ WITH (FORMAT GDAL, DRIVER 'GeoJSON');
 With aws:
 
 ```
-$ aws s3 cp --recursive --region us-west-2 --no-sign-request s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme=transportation/
+$ aws s3 cp --recursive --region us-west-2 --no-sign-request s3://overturemaps-us-west-2/release/2023-07-26-alpha.0/theme=transportation/ .
 ```
 
 warning 70+GB data!
